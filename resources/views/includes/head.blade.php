@@ -1,6 +1,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Atlantis Bootstrap 4 Admin Dashboard</title>
+    <title>{{ config('app.name') }} |
+        {{ Request::segment(1) ? ucwords(str_replace('-', ' ', Request::segment(1))) : 'Dashboard' }}</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="icon" href="{{ asset('/') }}img/icon.ico" type="image/x-icon" />
 

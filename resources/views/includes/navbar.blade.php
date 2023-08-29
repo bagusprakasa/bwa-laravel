@@ -93,27 +93,12 @@
                             <li>
                                 <a href="{{ route('product-gallery.index') }}">Gallery</a>
                             </li>
-                            <li>
-                                <a href="email-inbox.html">Email Inbox</a>
-                            </li>
-                            <li>
-                                <a href="email-detail.html">Email Detail</a>
-                            </li>
-                            <li>
-                                <a href="email-compose.html">Email Inbox</a>
-                            </li>
-                            <li>
-                                <a href="messages.html">Messages</a>
-                            </li>
-                            <li>
-                                <a href="conversations.html">Conversations</a>
-                            </li>
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item submenu">
+                <li class="nav-item submenu  @if (Request::segment(1) == 'transaction') active @endif">
                     <a class="nav-link" href="#">
-                        <span class="menu-title">Finance</span>
+                        <span class="menu-title">Transaction</span>
                     </a>
                     <div class="navbar-dropdown animated fadeIn">
                         <ul>
@@ -234,18 +219,6 @@
                     </div>
                 </li>
             </ul>
-            <div class="quick-search">
-                <form class="quick-search-form">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button type="submit" class="btn btn-search">
-                                <i class="fa fa-search search-icon"></i>
-                            </button>
-                        </div>
-                        <input type="text" placeholder="Search ..." class="form-control">
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 </div>

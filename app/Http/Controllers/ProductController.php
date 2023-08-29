@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
+use App\Models\ProductGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\STR;
@@ -130,6 +131,7 @@ class ProductController extends Controller
         DB::beginTransaction();
         try {
             $product->delete();
+            ProductGallery::where('products_id', $product->id)->delete();
 
             DB::commit();
 
@@ -141,5 +143,17 @@ class ProductController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Something wrong on database : ' . $e->getMessage());
         }
+    }
+
+    public function showGallery($id)
+    {
+        $title = 'Product';
+        $model = Product::with('galleries.product')->findOrFail($id);
+        $data = array(
+            'list' => 'List ' . $model->name . ' Gallery',
+            'data' => $model->galleries,
+            'menu' => 'Product',
+        );
+        return view('pages.products-gallery.index', compact('title', 'data'));
     }
 }
