@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/product/show-gallery/{id}', [ProductController::class, 'showGallery'])->name('product.show-gallery');
     Route::resource('product', ProductController::class);
     Route::resource('product-gallery', ProductGalleryController::class);
 });

@@ -1,4 +1,4 @@
-@if (Request::segment(1) != 'product-gallery')
+@if (Request::segment(1) != 'product-gallery' && Request::segment(2) != 'show-gallery')
     <button type="button" class="btn btn-icon btn-round btn-primary"
         onClick="editRow('{{ route(Request::segment(1) . '.edit', $item->id) }}')">
         <i class="fas fa-pencil-alt"></i>
@@ -8,8 +8,10 @@
     onClick="deleteRow({{ $item->id }},'{{ $item->name }}')">
     <i class="fas fa-trash"></i>
 </button>
-<form action="{{ route(Request::segment(1) . '.destroy', $item->id) }}" id="deleteAction{{ $item->id }}"
-    method="POST">
+@php
+    $route = Request::segment(2) != 'show-gallery' ? Request::segment(1) : 'product-gallery';
+@endphp
+<form action="{{ route($route . '.destroy', $item->id) }}" id="deleteAction{{ $item->id }}" method="POST">
     @csrf
     @method('DELETE')
 </form>

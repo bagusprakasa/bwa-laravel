@@ -30,7 +30,8 @@
                                         <td>{{ Helper::rupiah($item->price) }}</td>
                                         <td>{{ $item->quantity }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-icon btn-round btn-info">
+                                            <button type="button" class="btn btn-icon btn-round btn-info"
+                                                onclick="redirectTo('{{ route('product.show-gallery', $item->id) }}')">
                                                 <i class="fas fa-image"></i>
                                             </button>
                                             @include('components.button-table', $item)
@@ -45,3 +46,10 @@
         </div>
     </div>
 @endsection
+@push('custom-js')
+    <script>
+        function redirectTo(url) {
+            window.location.href = url
+        }
+    </script>
+@endpush
