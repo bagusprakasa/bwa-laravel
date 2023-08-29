@@ -31,7 +31,8 @@
                                         <td>{{ $item->quantity }}</td>
                                         <td>
                                             <button type="button" class="btn btn-icon btn-round btn-info"
-                                                onclick="redirectTo('{{ route('product.show-gallery', $item->id) }}')">
+                                                onclick="redirectTo('{{ route('product.show-gallery', $item->id) }}')"
+                                                data-toggle="tooltip" data-placement="top" title="Product Gallery">
                                                 <i class="fas fa-image"></i>
                                             </button>
                                             @include('components.button-table', $item)

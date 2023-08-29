@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductGalleryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/product/show-gallery/{id}', [ProductController::class, 'showGallery'])->name('product.show-gallery');
     Route::resource('product', ProductController::class);
     Route::resource('product-gallery', ProductGalleryController::class);
+    Route::get('/set-status/{id}', [TransactionController::class, 'setStatus'])->name('transaction.status');
+    Route::resource('transaction', TransactionController::class);
 });
 
 require __DIR__ . '/auth.php';
