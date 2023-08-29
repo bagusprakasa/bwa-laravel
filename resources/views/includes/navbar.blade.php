@@ -77,19 +77,18 @@
         <div class="container d-flex flex-lg-row flex-column-reverse px-3 px-lg-0">
             <ul class="nav page-navigation page-navigation-style-2 page-navigation-secondary mt-3 mt-lg-0">
                 <li class="nav-item @if (Request::segment(1) == '') active @endif">
-                    {{ Request::segment(1) }}
                     <a class="nav-link" href="{{ route('dashboard.index') }}">
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </li>
-                <li class="nav-item submenu">
+                <li class="nav-item submenu @if (Request::segment(1) == 'product') active @endif">
                     <a class="nav-link" href="#">
-                        <span class="menu-title">Apps</span>
+                        <span class="menu-title">Products</span>
                     </a>
                     <div class="navbar-dropdown animated fadeIn">
                         <ul>
                             <li>
-                                <a href="boards.html">Boards</a>
+                                <a href="{{ route('product.index') }}">Products</a>
                             </li>
                             <li>
                                 <a href="projects.html">Projects</a>
@@ -269,7 +268,7 @@
                 if (response == true) {
                     $('#logout').submit();
                 }
-            });;
+            });
         });
     </script>
 @endpush

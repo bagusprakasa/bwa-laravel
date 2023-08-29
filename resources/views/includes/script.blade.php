@@ -69,7 +69,67 @@
 <script src="{{ asset('/') }}js/atlantis2.min.js"></script>
 
 <!-- Atlantis DEMO methods, don't include it in your project! -->
-<script src="{{ asset('/') }}js/demo.js"></script>
+{{-- <script src="{{ asset('/') }}js/demo.js"></script> --}}
 
+{{-- Datatable --}}
+<script>
+    $(document).ready(function() {
+        $('#basic-datatables').DataTable({});
+    });
+    // Notif
+    @if (Session::has('success'))
+        $.notify({
+            icon: "fas fa-check-circle ",
+            title: "Shayna",
+            message: "{{ Session::get('success') }}",
+        }, {
+            type: "success",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+        });
+    @endif
+    @if (Session::has('error'))
+        $.notify({
+            icon: "fas fa-exclamation-triangle",
+            title: "Shayna",
+            message: "{{ Session::get('error') }}",
+        }, {
+            type: "danger",
+            placement: {
+                from: "top",
+                align: "right",
+            },
+            time: 1000,
+        });
+    @endif
+
+    // Component button table
+    function editRow(url) {
+        window.location.href = url
+    }
+
+    function deleteRow(id, name) {
+        swal("Are you sure ?", "You want to delete " + name + " ?", {
+            icon: "warning",
+            buttons: {
+                confirm: {
+                    className: 'btn btn-danger',
+                    text: "Yes",
+                },
+                cancel: {
+                    visible: true,
+                    className: 'btn btn-secondary',
+                },
+            },
+        }).then((response) => {
+            if (response == true) {
+                $('#deleteAction' + id).submit();
+            }
+        });
+    }
+</script>
 {{-- Push js custom page --}}
 @stack('custom-js')
