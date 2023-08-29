@@ -16,7 +16,7 @@
                     "simple-line-icons"
                 ],
                 urls: [
-                    "../assets/css/fonts.min.css"
+                    "{{ asset('/') }}css/fonts.min.css"
                 ]
             },
             active: function() {
@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{{ asset('/') }}css/atlantis2.css">
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="{{ asset('/') }}css/demo.css">
+    {{-- <link rel="stylesheet" href="{{ asset('/') }}css/demo.css"> --}}
 
     {{-- Push css custom page --}}
     @stack('custom-css')
