@@ -81,7 +81,7 @@
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </li>
-                <li class="nav-item submenu @if (Request::segment(1) == 'product') active @endif">
+                <li class="nav-item submenu @if (Request::segment(1) == 'product' || Request::segment(1) == 'product-gallery') active @endif">
                     <a class="nav-link" href="#">
                         <span class="menu-title">Products</span>
                     </a>
@@ -91,7 +91,7 @@
                                 <a href="{{ route('product.index') }}">Products</a>
                             </li>
                             <li>
-                                <a href="projects.html">Projects</a>
+                                <a href="{{ route('product-gallery.index') }}">Gallery</a>
                             </li>
                             <li>
                                 <a href="email-inbox.html">Email Inbox</a>

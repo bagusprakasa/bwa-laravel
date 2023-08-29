@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductGalleryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::resource('product', ProductController::class);
+    Route::resource('product-gallery', ProductGalleryController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -71,10 +71,14 @@
 <!-- Atlantis DEMO methods, don't include it in your project! -->
 {{-- <script src="{{ asset('/') }}js/demo.js"></script> --}}
 
-{{-- Datatable --}}
 <script>
+    // {{-- Datatable --}}
     $(document).ready(function() {
         $('#basic-datatables').DataTable({});
+    });
+    // Select2
+    $('#basic').select2({
+        theme: "bootstrap"
     });
     // Notif
     @if (Session::has('success'))
